@@ -17,6 +17,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* App.css or index.css */
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;

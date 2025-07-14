@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { motion } from 'framer-motion';
 
 export default function TipsPage() {
   const tips = [
@@ -14,26 +14,32 @@ export default function TipsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-green-50 p-4">
-      {/* <header className="bg-green-700 text-white p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">EcoCart 🌿 - Sustainability Tips</h1>
-        <Link to="/" className="bg-green-600 hover:bg-green-500 px-3 py-1 rounded">
-          Back to Products
-        </Link>
-      </header> */}
+    <div className="min-h-screen bg-green-50 dark:bg-gray-900 transition-colors duration-300">
       <Navbar />
 
-
-      <main className="max-w-2xl mx-auto mt-6 bg-white rounded-lg shadow p-4">
-        <h2 className="text-green-800 text-xl font-bold mb-4">🌿 Simple Ways to Shop Sustainably</h2>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-2xl mx-auto mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+      >
+        <h2 className="text-green-800 dark:text-green-300 text-xl font-bold mb-4">
+          🌿 Simple Ways to Shop Sustainably
+        </h2>
         <ul className="space-y-3">
           {tips.map((tip, index) => (
-            <li key={index} className="p-3 bg-green-100 rounded-lg text-green-800">
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="p-3 bg-green-100 dark:bg-green-700 rounded-lg text-green-800 dark:text-green-200"
+            >
               {tip}
-            </li>
+            </motion.li>
           ))}
         </ul>
-      </main>
+      </motion.main>
     </div>
   );
 }
